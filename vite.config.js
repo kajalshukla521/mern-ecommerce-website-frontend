@@ -5,6 +5,9 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+
+  base: '/mern-ecommerce-website-frontend/',
+ 
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
