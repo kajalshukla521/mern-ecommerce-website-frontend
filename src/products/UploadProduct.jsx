@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { CgClose } from "react-icons/cg";
-import productCategory from "../../helpers/productCategory"
+import productCategory from "./productCategory"
 import { FaCloudUploadAlt } from "react-icons/fa";
-import uploadImage from "../../helpers/UploadImage"
-import DisplayImage from './DisplayImage';
+import uploadImage from "../helpers/UploadImage"
+import DisplayImage from '../helpers/DisplayImage';
 import { MdDelete } from "react-icons/md";
-import SummaryApi from '../../common';
+import SummaryApi from '../common/index';
 
 
 import {toast} from 'react-toastify'

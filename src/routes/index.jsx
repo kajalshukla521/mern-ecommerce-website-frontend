@@ -1,12 +1,16 @@
 import { createBrowserRouter } from "react-router-dom"
 import App from "../App"
-import Home from "../pages/Home";  // Ensure this path is correct
+
 import LoginForm from "../auth/LoginForm";  // Check if the path is correct
-import ForgotPassword from "../auth/ForgotPassword";  // Check if the path is correct
 import SignupForm from "../auth/SignUpForm"; 
-import AdminPanel from "../pages/AdminPanel";
-import AllUsers from "../pages/AllUsers";
-import AllProducts from "../pages/AllProducts";
+import AdminPanel from "../admin/AdminPanel";
+
+import AllProducts from "../products/AllProducts";
+import AllUsers from "../users/AllUsers";
+import Home from "../pages/Home";
+import ProductDetails from "../pages/ProductDetails";
+import CategoryList from "../allcategory/AllCategoryList";
+import CategoryProduct from "../allcategory/CategoryProduct";
 
 
 
@@ -18,8 +22,8 @@ const router = createBrowserRouter([
     element : <App />,
     children : [
         {
-            path : "home",
-            element : < Home/>
+            path : "/",
+            element : <Home/>
         },
 
 
@@ -28,16 +32,23 @@ const router = createBrowserRouter([
             element : <LoginForm />
         },
 
-        {
-            path : "forgot-password",
-            element : <ForgotPassword />
-
-        },
-
+        
         {
             path : "signupForm",
             element : <SignupForm/>
         },
+
+        {
+            path : "product-category/:categoryName",
+            element : <CategoryProduct/>
+        },
+
+
+        {
+            path : "product/:id",
+            element : <ProductDetails/>
+        },
+
 
 
         

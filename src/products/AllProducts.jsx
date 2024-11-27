@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import UploadProduct from '../components/common/UploadProduct';
+import UploadProduct from './UploadProduct';
 import SummaryApi from '../common';
-import AdminProductCard from '../components/common/AdminProductCard';
+import AdminProductCard from '../admin/AdminProductCard';
 
 
 

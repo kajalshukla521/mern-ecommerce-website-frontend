@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SummaryApi from '../common'
 import moment from "moment"
 import { MdModeEdit } from "react-icons/md";
-import ChangeUserRole from '../components/common/ChangeUserRole';
+import ChangeUserRole from './ChangeUserRole';
 
 
 const AllUsers = () => {

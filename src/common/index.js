@@ -44,7 +44,64 @@ getproduct :{
   url:`${backendDomain}/api/get-product`, 
   method : "GET",
 
+},
+
+
+updateproduct :{
+  url:`${backendDomain}/api/update-product`, 
+  method : "POST",
+  
+},
+
+categoryproduct :{
+
+  url:`${backendDomain}/api/get-category-product`, 
+  method : "GET",
+
+  
+},
+categoryWiseProduct :{
+
+  url:`${backendDomain}/api/category-product`, 
+  method : "POST",
+
+  
+},
+
+
+productdetails :{
+
+  url:`${backendDomain}/api/product-details`, 
+  method : "POST",
+
+  
+},
+
+
+
+
+
+addToCartProduct :{
+
+  url:`${backendDomain}/api/addtocart`, 
+  method : "POST",
+
+  
+},
+
+
+AddToCartProductCount :{
+  url:`${backendDomain}/api/countAddToCartProduct`, 
+  method : "GET",
 }
+
+
+
+
+
+
+
+
 
 
 

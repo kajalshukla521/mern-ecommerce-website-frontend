@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { GrSearch } from "react-icons/gr";
 import { FaUser } from "react-icons/fa6";
 import { IoCart } from "react-icons/io5";
@@ -10,17 +10,21 @@ import SummaryApi from '../../common';
 import { toast } from 'react-toastify';
 import { setUserDetails } from '../../redux/authSlice';
 import ROLE from "../../common/role";
+import Context from '../../context';
 
 
 const Header = () => {
 
+  const context = useContext(Context)
+
   const [menuDisplay, setMenuDisplay] = useState(false)
   const dispatch = useDispatch();
+  console.log("header add to cart count", context)
 
   // const { user, token } = useSelector((state) => state.user); 
 
   const user = useSelector(state => state?.user?.user)
-  console.log("user header", user)
+  // console.log("user header", user)
 
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.logout_user.url, {
@@ -42,9 +46,10 @@ const Header = () => {
     }
 
   }
+
   return (
     <header>
-      <div className='h-16 shadow-md w-full flex items-center px-4 relative bg-white'>
+      <div className='h-16 shadow-md flex items-center px-7 bg-white  fixed w-full z-40'>
 
         {/* Center Search Bar */}
         <div className='flex-1 flex justify-center'>
@@ -72,30 +77,30 @@ const Header = () => {
 
 
                 <div className='text-3xl cursor-pointer relative flex justify-center' onClick={() => setMenuDisplay(prev => !prev)}>
-                {
-                  user?.profilePic ? (
-                    <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
-                  ) : (
-                    <FaRegUserCircle />
-                  )
-                }
-              </div>
+                  {
+                    user?.profilePic ? (
+                      <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
+                    ) : (
+                      <FaRegUserCircle />
+                    )
+                  }
+                </div>
               )
 
-              
+
             }
-           
+
 
 
             {
               menuDisplay && (
                 <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded' >
-                  
+
                   <nav>
-                          
-                              <Link to={"/admin-panel"} className='whitespace-nowrap hidden md:block hover:bg-slate-100 p-2' onClick={()=>setMenuDisplay(preve => !preve)}>Admin Panel</Link>
-                            
-                        </nav>
+
+                    <Link to={"/admin-panel"} className='whitespace-nowrap hidden md:block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(preve => !preve)}>Admin Panel</Link>
+
+                  </nav>
                 </div>
               )
             }
@@ -106,12 +111,18 @@ const Header = () => {
 
 
           {/* Cart Icon */}
-          <div className='text-2xl cursor-pointer relative'>
-            <IoCart />
-            <div className='bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-2'>
-              <p className='text-xs'>0</p>
-            </div>
-          </div>
+          {
+
+            user?._id && (
+              <div className='text-2xl cursor-pointer relative'>
+                <IoCart />
+                <div className='bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-2'>
+                  <p className='text-xs'>{context?.cartProductCount}</p>
+                </div>
+              </div>
+            )
+          }
+
 
 
 

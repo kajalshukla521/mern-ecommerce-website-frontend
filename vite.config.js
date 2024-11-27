@@ -6,7 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
 
-  base: '/mern-ecommerce-website-frontend/',
+  // base: '/mern-ecommerce-website-frontend/',
  
   resolve: {
     alias: {
