@@ -32,7 +32,7 @@ const ProductDetails = () => {
   })
   const [zoomImage,setZoomImage] = useState(false)
 
-  // const { fetchUserAddToCart } = useContext(Context)
+  const { fetchUserAddToCart } = useContext(Context)
 
   const navigate = useNavigate()
 
@@ -92,7 +92,7 @@ const ProductDetails = () => {
   const handleBuyProduct = async(e,id)=>{
     await AddToCart(e,id)
     fetchUserAddToCart()
-    navigate("/addtocart")
+    navigate("/cart")
 
   }
 
@@ -109,7 +109,7 @@ const ProductDetails = () => {
                     {/**product zoom */}
                     {
                       zoomImage && (
-                        <div className=' lg:block absolute min-w-[500px] overflow-hidden min-h-[400px] bg-slate-200 p-1 -right-[510px] top-0'>
+                        <div className='hidden lg:block absolute min-w-[500px] overflow-hidden min-h-[400px] bg-slate-200 p-1 -right-[510px] top-0'>
                           <div
                             className='w-full h-full min-h-[400px] min-w-[500px] mix-blend-multiply scale-150'
                             style={{
@@ -227,7 +227,6 @@ const ProductDetails = () => {
           <CategroyWiseProductDisplay category={data?.category} heading={"Recommended Product"}/>
         )
       }
-     
      
 
 

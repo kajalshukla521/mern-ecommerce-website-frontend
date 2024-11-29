@@ -10,74 +10,57 @@ import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from './redux/authSlice';
 
-
 function App() {
   const dispatch = useDispatch()
   const [cartProductCount,setCartProductCount] = useState(0)
 
-  const fetchUserDatails = async() =>{
-    const dataResponse = await fetch(SummaryApi.Current_user.url,{
-      method : SummaryApi.Current_user.method,
-      credentials : "include"
-    })
-    const dataApi = await dataResponse.json()
-    if(dataApi.success){
-      dispatch(setUserDetails(dataApi.data))
+  const fetchUserDetails = async()=>{
+      const dataResponse = await fetch(SummaryApi. Current_user.url,{
+        method : SummaryApi. Current_user.method,
+        credentials : 'include'
+      })
 
-    }
+      const dataApi = await dataResponse.json()
 
-    // console.log("data-user", dataResponse)
+      if(dataApi.success){
+        dispatch(setUserDetails(dataApi.data))
+      }
   }
 
+  const fetchUserAddToCart = async()=>{
+    const dataResponse = await fetch(SummaryApi.AddToCartProductCount.url,{
+      method : SummaryApi.AddToCartProductCount.method,
+      credentials : 'include'
+    })
 
+    const dataApi = await dataResponse.json()
 
-
-  const fetchUserAddToCart = async () => { 
-    const dataResponse = await fetch(SummaryApi.AddToCartProductCount.url, {
-        method: SummaryApi.AddToCartProductCount.method,
-        credentials: "include",
-    });
-    const dataApi = await dataResponse.json();
-    if (dataApi.success) {
-        dispatch(setUserDetails(dataApi.data));
-       
-        setCartProductCount(dataApi?.data?.count)
-        console.log("dataApi", dataApi)
-    }
-};
-
-
-
+    setCartProductCount(dataApi?.data?.count)
+  }
 
   useEffect(()=>{
-    //userDetails
-    fetchUserDatails()
-    //userdetails cart product
+    /**user Details */
+    fetchUserDetails()
+    /**user Details cart product */
     fetchUserAddToCart()
 
   },[])
   return (
     <>
-    <Context.Provider value= {{
-      fetchUserDatails, //user details fetch
-      cartProductCount, //curret user count addtocart product
-      fetchUserAddToCart
-
-    }}>
-    <ToastContainer />
-      <Header />
-     
-
-      {/* Footer ke space ko cover karne ke liye padding add ki */}
-      <main className='min-h-[calc(100vh-120px)] pt-16'>
+      <Context.Provider value={{
+          fetchUserDetails, // user detail fetch 
+          cartProductCount, // current user add to cart product count,
+          fetchUserAddToCart
+      }}>
+        <ToastContainer 
+          position='top-center'
+        />
         
-        <Outlet />
-       
-       
-      </main>
-     
-      
-      <Footer />
+        <Header/>
+        <main className='min-h-[calc(100vh-120px)] pt-16'>
+          <Outlet/>
+        </main>
+        <Footer/>
       </Context.Provider>
     </>
   );

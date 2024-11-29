@@ -93,6 +93,31 @@ addToCartProduct :{
 AddToCartProductCount :{
   url:`${backendDomain}/api/countAddToCartProduct`, 
   method : "GET",
+},
+
+addToCartProductView :{
+  url:`${backendDomain}/api/view-card-product`, 
+  method : "GET",             
+
+  
+},
+
+
+updateCartProduct : {
+  url : `${backendDomain}/api/update-cart-product`,
+  method : 'post'
+},
+deleteCartProduct : {
+  url : `${backendDomain}/api/delete-cart-product`,
+  method : 'post'
+},
+searchProduct : {
+  url : `${backendDomain}/api/search`,
+  method : 'get'
+},
+filterProduct : {
+  url : `${backendDomain}/api/filter-product`,
+  method : 'post'
 }
 
 

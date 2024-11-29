@@ -5,19 +5,19 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import AddToCart from '../addToCard/AddToCart'
 import Context from '../context'
-// import scrollTop from '../helpers/scrollTop'
+import scrollTop from '../helpers/scrollTop'
 
 const CategroyWiseProductDisplay = ({category, heading}) => {
     const [data,setData] = useState([])
     const [loading,setLoading] = useState(true)
     const loadingList = new Array(13).fill(null)
 
-    // const { fetchUserAddToCart } = useContext(Context)
+    const { fetchUserAddToCart } = useContext(Context)
 
-    // const handleAddToCart = async(e,id)=>{
-    //    await addToCart(e,id)
-    //    fetchUserAddToCart()
-    // }
+    const handleAddToCart = async(e,id)=>{
+       await AddToCart(e,id)
+       fetchUserAddToCart()
+    }
 
 
 
@@ -34,10 +34,6 @@ const CategroyWiseProductDisplay = ({category, heading}) => {
     useEffect(()=>{
         fetchData()
     },[])
-
-
-
-
   return (
     <div className='container mx-auto px-4 my-6 relative'>
 

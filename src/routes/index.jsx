@@ -11,6 +11,8 @@ import Home from "../pages/Home";
 import ProductDetails from "../pages/ProductDetails";
 import CategoryList from "../allcategory/AllCategoryList";
 import CategoryProduct from "../allcategory/CategoryProduct";
+import Cart from "../addToCard/Cart";
+import SearchProduct from "../pages/SearchProduct";
 
 
 
@@ -49,6 +51,18 @@ const router = createBrowserRouter([
             element : <ProductDetails/>
         },
 
+
+
+        { path : "cart",
+            element : <Cart />
+
+        },
+
+        {
+            path : "search",
+            element : <SearchProduct/>
+
+        },
 
 
         

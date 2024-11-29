@@ -16,8 +16,9 @@ const LoginForm = () => {
         email : "",
         password : ""
     })
-    const fetchUserDetails = useContext(Context)
     const navigate = useNavigate()
+    const {fetchUserDetails,fetchUserAddToCart} = useContext(Context)
+   
     
 
     const handleOnChange = (e) =>{
@@ -53,6 +54,7 @@ const LoginForm = () => {
             navigate('/')
             
             fetchUserDetails()
+            fetchUserAddToCart()
          
         }
 
